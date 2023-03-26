@@ -9,10 +9,12 @@ import SwiftUI
 
 struct QuestionView: View {
     @EnvironmentObject var boolean: Boolean
+    @EnvironmentObject var resultViewModel: ResultViewModel
     
     var body: some View {
         GeometryReader {
             let size = $0.size
+            
             ZStack(alignment: .top) {
                 Color.white.opacity(boolean.testStart ? 1 : 0)
                     .ignoresSafeArea()
@@ -69,7 +71,7 @@ struct QuestionView: View {
                     ZStack {
                         // 답
                         VStack(spacing: boolean.testResult ? 0 : 4) {
-                            ForEach(questions[boolean.currentIndex-1].answer, id: \.self) { answer in
+                            ForEach(questions[boolean.currentIndex-1].answer.indices, id: \.self) { index in
                                 VStack(alignment: .leading) {
                                     RoundedRectangle(cornerRadius: 16)
                                         .fill(.gray.opacity(boolean.testResult ? 1 : 0.2))
@@ -78,7 +80,7 @@ struct QuestionView: View {
                                             HStack {
                                                 Spacer()
                                                 
-                                                Text(answer)
+                                                Text(questions[boolean.currentIndex-1].answer[index])
                                                     .font(.system(size: 13, weight: .bold, design: .rounded))
                                                     .foregroundColor(.black)
                                                     .minimumScaleFactor(0.01)
@@ -93,6 +95,9 @@ struct QuestionView: View {
                                         .animation(.interactiveSpring(response: 0.4, dampingFraction: 1, blendDuration: 0.2).delay(1), value: boolean.testStart)
                                 }
                                 .onTapGesture {
+                                    resultViewModel.caculateValue(selectedAnswer: questions[boolean.currentIndex-1].values[index])
+                                    resultViewModel.deriveResult()
+                                    
                                     if boolean.currentIndex < questions.count {
                                         withAnimation(.interactiveSpring(response: 0.7, dampingFraction: 1, blendDuration: 0.2)) {
                                             boolean.currentIndex += 1

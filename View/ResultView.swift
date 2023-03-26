@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ResultView: View {
     @EnvironmentObject var boolean: Boolean
+    @EnvironmentObject var resultViewModel: ResultViewModel
+    
     
     var body: some View {
         GeometryReader {
@@ -27,26 +29,26 @@ struct ResultView: View {
                             .animation(.interactiveSpring(response: 1.1, dampingFraction: 0.8, blendDuration: 0.2).delay(1), value: boolean.resultPage)
                         
                         
-                        Text("Eric")
+                        Text(resultViewModel.memberType.name)
                             .font(.system(size: 40, weight: .bold, design: .rounded))
                             .foregroundColor(.black)
                             .padding()
                             .opacity(boolean.resultPage ? 1 : 0)
                             .animation(.interactiveSpring(response: 1.1, dampingFraction: 0.8, blendDuration: 0.2).delay(2), value: boolean.resultPage)
                         
-                        Image("Memoji_Eric")
+                        Image(resultViewModel.memberType.memoji)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .opacity(boolean.resultPage ? 1 : 0)
                             .animation(.interactiveSpring(response: 1.1, dampingFraction: 0.8, blendDuration: 0.2).delay(2), value: boolean.resultPage)
                             .frame(width: size.width / 2)
                         
-                        Text("CBL 적응도")
+                        Text("\(resultViewModel.memberType.adaptability)")
                             .font(.system(size: 14, weight: .bold, design: .rounded))
                             .opacity(boolean.resultPage ? 1 : 0)
                             .animation(.interactiveSpring(response: 1.1, dampingFraction: 0.8, blendDuration: 0.2).delay(2.3), value: boolean.resultPage)
                         
-                        Text("hashtags")
+                        Text(resultViewModel.memberType.hashtags.description)
                             .font(.system(size: 14, weight: .bold, design: .rounded))
                             .opacity(boolean.resultPage ? 1 : 0)
                             .animation(.interactiveSpring(response: 1.1, dampingFraction: 0.8, blendDuration: 0.2).delay(2.3), value: boolean.resultPage)
