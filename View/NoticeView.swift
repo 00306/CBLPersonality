@@ -13,6 +13,7 @@ struct NoticeView: View {
     var body: some View {
         GeometryReader {
             let size = $0.size
+            
             VStack {
                 HStack {
                     Text("유의사항")

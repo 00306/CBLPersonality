@@ -16,7 +16,7 @@ struct QuestionView: View {
             let size = $0.size
             
             ZStack(alignment: .top) {
-                Color.white.opacity(boolean.testStart ? 1 : 0)
+                Color.backgroundBlack.opacity(boolean.testStart ? 1 : 0)
                     .ignoresSafeArea()
                  
                 VStack {
@@ -35,11 +35,35 @@ struct QuestionView: View {
                             Spacer()
                         }
                         
-                        Text("Question \(boolean.currentIndex)")
-                            .font(.system(size: 40, weight: .bold, design: .rounded))
-                            .foregroundColor(.white)
-                            .opacity(boolean.testStart ? 1 : 0)
-                            .padding(.vertical, 50)
+                        HStack(alignment: .center) {
+                            Text("Question \(boolean.currentIndex)")
+                                .font(.system(size: 40, weight: .bold, design: .rounded))
+                                .foregroundColor(.white)
+                                .opacity(boolean.testStart ? 1 : 0)
+                                .padding(.vertical, 50)
+                            
+                            Spacer()
+                            
+                            VStack {
+                                Image(systemName: "questionmark.circle.fill")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .foregroundColor(.gray)
+                                    .frame(width: size.width / 20)
+                                    .background {
+                                        Circle()
+                                            .fill(.white)
+                                        
+                                    }
+                                    .padding(.horizontal)
+                                    .opacity(boolean.testStart ? 1 : 0)
+                                    .onTapGesture {
+                                        withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.9, blendDuration: 0.2)) {
+                                            boolean.clickedQuestionmark.toggle()
+                                        }
+                                    }
+                            }
+                        }
                         
                         ZStack {
                             ForEach(questions.indices, id: \.self) { index in
@@ -54,17 +78,16 @@ struct QuestionView: View {
                         Spacer()
                     }
                     .padding()
-                    .frame(width: size.width, height: boolean.testStart ? size.height * 2 / 3 : 0)
+                    .frame(width: size.width, height: boolean.testStart ? size.height * 2 / 5 : 0)
                     .background {
                         RoundedRectangle(cornerRadius: 30)
-                            .fill(.indigo)
+                            .foregroundColor(.backgroundBlack)
                             .opacity(boolean.testStart ? 1 : 0)
                             .ignoresSafeArea()
                             .onTapGesture {
                                 withAnimation(.interactiveSpring(response: 0.7, dampingFraction: 1, blendDuration: 0.2)) {
                                     boolean.testStart.toggle()
                                 }
-                                boolean.testStart.toggle()
                             }
                     }
                     
@@ -73,8 +96,9 @@ struct QuestionView: View {
                         VStack(spacing: boolean.testResult ? 0 : 4) {
                             ForEach(questions[boolean.currentIndex-1].answer.indices, id: \.self) { index in
                                 VStack(alignment: .leading) {
+                                    
                                     RoundedRectangle(cornerRadius: 16)
-                                        .fill(.gray.opacity(boolean.testResult ? 1 : 0.2))
+                                        .foregroundColor(.questionGray)
                                         .frame(maxWidth: size.width / 1.1, maxHeight: 500)
                                         .overlay {
                                             HStack {
@@ -82,7 +106,7 @@ struct QuestionView: View {
                                                 
                                                 Text(questions[boolean.currentIndex-1].answer[index])
                                                     .font(.system(size: 13, weight: .bold, design: .rounded))
-                                                    .foregroundColor(.black)
+                                                    .foregroundColor(.white)
                                                     .minimumScaleFactor(0.01)
                                                     .padding()
                                                     .scaleEffect(boolean.testResult ? 0.01 : 1)
@@ -92,7 +116,7 @@ struct QuestionView: View {
                                             }
                                         }
                                         .offset(y: boolean.testStart ? 0 : size.height * 1.2)
-                                        .animation(.interactiveSpring(response: 0.4, dampingFraction: 1, blendDuration: 0.2).delay(1), value: boolean.testStart)
+                                        .animation(.interactiveSpring(response: 0.4, dampingFraction: 1, blendDuration: 0.2).delay(Double(index/2)), value: boolean.testStart)
                                 }
                                 .onTapGesture {
                                     resultViewModel.caculateValue(selectedAnswer: questions[boolean.currentIndex-1].values[index])
@@ -110,10 +134,11 @@ struct QuestionView: View {
                                 }
                             }
                         }
+                        .frame(height: size.height / 2.15)
                         
                         RoundedRectangle(cornerRadius: 16)
                             .fill(.gray.opacity(boolean.testResult ? 1 : 0.2))
-                            .frame(width: boolean.testResult ? size.width / 1.1 : nil, height: boolean.testResult ? size.height / 2.3 : nil)
+                            .frame(width: boolean.testResult ? size.width / 1.1 : nil, height: boolean.testResult ? size.height / 1.1 : nil)
                             .overlay {
                                 VStack {
                                     Image(systemName: "checkmark.circle")
@@ -157,6 +182,10 @@ struct QuestionView: View {
                                 }
                             }
                     }
+                    
+                    ButtonView()
+                        .opacity(boolean.testStart ? 1 : 0)
+                        .animation(nil, value: boolean.testStart)
                 }
             }
         }

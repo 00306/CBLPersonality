@@ -20,15 +20,31 @@ struct ButtonView: View {
                     Spacer()
                     
                     ZStack {
+                        Text("→ 다음")
+                            .font(.system(size: 16, weight: .bold, design: .rounded))
+                            .foregroundColor(.white)
+                            .frame(width: size.width / 1.2, height: size.height / 1.2)
+                            .background {
+                                Capsule()
+                                    .stroke(.gray, lineWidth: 3)
+                            }
+                            .opacity(boolean.testStart ? 1 : 0)
+                            .onTapGesture {
+                                withAnimation(.interactiveSpring(response: 0.7, dampingFraction: 1, blendDuration: 0.2)) {
+                                    boolean.testStart.toggle()
+                                }
+                            }
+                        
                         Text("테스트 시작")
                             .font(.system(size: 16, weight: .bold, design: .rounded))
                             .foregroundColor(.white)
-                            .frame(width: size.width / 1.2, height: size.height / 1.4)
+                            .frame(width: size.width / 1.2, height: size.height / 1.2)
                             .background {
                                 Capsule()
-                                .fill(.blue)
+                                    .stroke(.gray, lineWidth: 3)
                             }
                             .opacity(boolean.testClicked ? 1 : 0)
+                            .opacity(boolean.testStart ? 0 : 1)
                             .onTapGesture {
                                 withAnimation(.interactiveSpring(response: 0.7, dampingFraction: 1, blendDuration: 0.2)) {
                                     boolean.testStart.toggle()
@@ -37,8 +53,8 @@ struct ButtonView: View {
                         
                         Text("→ 알아보러 가기")
                             .font(.system(size: 16, weight: .medium, design: .rounded))
-                            .foregroundColor(.black)
-                            .frame(width: size.width / 1.2, height: size.height / 1.4)
+                            .foregroundColor(.white)
+                            .frame(width: size.width / 1.2, height: size.height / 1.2)
                             .background {
                                     Capsule()
                                         .stroke(.gray, lineWidth: 3)

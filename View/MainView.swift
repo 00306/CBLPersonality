@@ -12,6 +12,7 @@ class Boolean: ObservableObject {
     @Published var testStart = false
     @Published var testResult = false
     @Published var resultPage = false
+    @Published var clickedQuestionmark = false
     @Published var currentIndex = 1
 }
 

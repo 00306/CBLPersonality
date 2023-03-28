@@ -11,10 +11,11 @@ class ResultViewModel: ObservableObject {
     @Published var memberName: String = ""
     @Published var value: TypeValue = TypeValue(soniaType: 0.0, jayType: 0.0, lorenzoType: 0.0, guardyType: 0.0, ericType: 0.0)
     @Published var memberType: TypeModel = TypeModel(title: "", name: "", adaptability: 0, hashtags: [], memoji: "", description: "", pointColor: Color.clear)
+    
     let memberTypes: [TypeModel] = types
     
     func deriveResult() {
-        var array: [String:Double] = ["에릭" : value.ericType, "소니아" : value.soniaType, "제이" : value.jayType, "로렌조" : value.lorenzoType, "가디" : value.guardyType]
+        let array: [String:Double] = ["에릭" : value.ericType, "소니아" : value.soniaType, "제이" : value.jayType, "로렌조" : value.lorenzoType, "가디" : value.guardyType]
         if let maxKey = array.max(by: { $0.value < $1.value })?.key {
             self.memberName = maxKey
             }
@@ -33,4 +34,16 @@ class ResultViewModel: ObservableObject {
         self.value.lorenzoType += selectedAnswer.lorenzoType
         self.value.guardyType += selectedAnswer.guardyType
     }
+}
+
+
+
+extension Color {
+    static var jayYellow = Color("jayYellow")
+    static var soniaGreen = Color("soniaGreen")
+    static var lorenzoPink = Color("lorenzoPink")
+    static var guardyBlue = Color("guardyBlue")
+    static var ericOrange = Color("ericOrange")
+    static var backgroundBlack = Color("backgroundBlack")
+    static var questionGray = Color("questionGray")
 }

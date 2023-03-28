@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+struct QuestionCategory {
+    let questions: [QuestionModel]
+    let firstType: String
+    let secondType: String
+}
+
 struct QuestionModel: Hashable {
     let questionNumber: Int
     let question: String
@@ -26,9 +32,7 @@ var questions: [QuestionModel] = [
     .init(questionNumber: 1,
           question: "나는 팀플에서 주로...",
           answer: ["주로 아이디어를 먼저 내면서 주도하는 편이다.",
-                   "아이디어를 먼저 내기보다는 팀원들의 의견을 경청한다.",
-                   "아이디어를 내기 전에 괜찮은 아이디어일지 고민해보고 말하는 편이다.",
-                   "아이디어를 내기보다는 의미있는 질문을 던짐으로써 팀원들의 괜찮은 아이디어를 유발한다."],
+                   "아이디어를 먼저 내기보다는 팀원들의 의견을 경청한다.",],
           values: [TypeValue(soniaType: 3, jayType: 1, lorenzoType: 3, guardyType: 5, ericType: 2),
                    TypeValue(soniaType: 2, jayType: 2, lorenzoType: 10, guardyType: 3, ericType: 9),
                    TypeValue(soniaType: 7, jayType: 2, lorenzoType: 6, guardyType: 2, ericType: 4),
