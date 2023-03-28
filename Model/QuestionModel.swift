@@ -28,6 +28,10 @@ struct TypeValue: Hashable {
     var ericType: Double
 }
 
+
+
+let what = ["githubtest"]
+
 var questions: [QuestionModel] = [
     .init(questionNumber: 1,
           question: "나는 팀플에서 주로...",
