@@ -9,7 +9,6 @@ import SwiftUI
 
 struct TypeExampleView: View {
     @EnvironmentObject var boolean: Boolean
-    @State private var clickExample = false
     
     var body: some View {
         ZStack {
@@ -26,8 +25,9 @@ struct TypeExampleView: View {
                             .font(.system(size: 36, weight: .regular, design: .default))
                             .multilineTextAlignment(.leading)
                             .foregroundColor(.white)
-                            .offset(x: boolean.testClicked ? -size.width : 0)
+                            .offset(x: boolean.firstClicked ? -size.width : 0)
                             .padding(.leading, 40)
+                            .opacity(boolean.firstClicked ? 0 : 1)
                         
                         Spacer()
                     }
@@ -60,23 +60,14 @@ struct TypeExampleView: View {
                                     
                                     Spacer()
                                 }
-                                .offset(y: clickExample ? -120 : 0)
-                                .animation(.interactiveSpring(response: 1.1, dampingFraction: 0.7, blendDuration: 0.1).delay(boolean.testClicked ? 0.1 : 0), value: boolean.testClicked)
-                                .offset(x: boolean.testClicked ? -size.width : 0)
-                                .onTapGesture {
-                                    withAnimation(.interactiveSpring(response: 0.7, dampingFraction: 0.9, blendDuration: 0.2)) {
-                                        self.clickExample.toggle()
-                                    }
-                                }
                             }
+                            .offset(x: boolean.firstClicked ? -size.width : 0)
+                            .opacity(boolean.firstClicked ? 0 : 1)
                         }
                     }
                 }
                 .frame(height: 350)
                 .padding(.bottom)
-                
-                
-                ButtonView()
             }
         }
     }

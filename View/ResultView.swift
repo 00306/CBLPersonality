@@ -43,8 +43,19 @@ struct ResultView: View {
                             .animation(.interactiveSpring(response: 1.1, dampingFraction: 0.8, blendDuration: 0.2).delay(2), value: boolean.resultPage)
                             .frame(width: size.width / 2)
                         
-                        Text("\(resultViewModel.memberType.adaptability)")
-                            .font(.system(size: 14, weight: .bold, design: .rounded))
+                        ZStack{
+                                       HStack{
+                                           ForEach(0..<5){ num in
+                                               Image(systemName: "star")
+                                           }
+                                       }.frame(width: 100, height: 100, alignment:.leading)
+                                       HStack{
+                                           ForEach(0..<4){ num in
+                                                   Image(systemName: "star.fill")
+                                               }
+                                       }.frame(width: 100, height: 100, alignment: .leading)
+                                           
+                                       }
                             .opacity(boolean.resultPage ? 1 : 0)
                             .animation(.interactiveSpring(response: 1.1, dampingFraction: 0.8, blendDuration: 0.2).delay(2.3), value: boolean.resultPage)
                         

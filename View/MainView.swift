@@ -8,11 +8,12 @@
 import SwiftUI
 
 class Boolean: ObservableObject {
-    @Published var testClicked = false
+    @Published var firstClicked = false
     @Published var testStart = false
     @Published var testResult = false
     @Published var resultPage = false
     @Published var clickedQuestionmark = false
+    @Published var answerClicked = false
     @Published var currentIndex = 1
 }
 
@@ -21,17 +22,21 @@ struct MainView: View {
     
     var body: some View {
         ZStack {
+            
             // Type 예시
             TypeExampleView()
            
-            // 유의사항
-            NoticeView()
-            
             // 문제
             QuestionView()
             
             // 결과
             ResultView()
+            
+            VStack {
+                Spacer()
+                
+                ButtonView()
+            }
         }
     }
 }
