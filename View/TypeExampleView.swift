@@ -12,63 +12,98 @@ struct TypeExampleView: View {
     
     var body: some View {
         ZStack {
-            Color.backgroundBlack
-                .ignoresSafeArea()
-            
-            VStack {
-                GeometryReader {
-                    let size = $0.size
-                    
-                    HStack {
+            GeometryReader {
+                let size = $0.size
+                
+                Color.backgroundBlack
+                    .ignoresSafeArea()
+                    .statusBarStyle(.lightContent)
 
-                        Text("당신의\nChallenge\nBased\nLearning\n유형은?")
-                            .font(.system(size: 36, weight: .regular, design: .default))
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(.white)
-                            .offset(x: boolean.firstClicked ? -size.width : 0)
-                            .padding(.leading, 40)
-                            .opacity(boolean.firstClicked ? 0 : 1)
-                        
+                VStack(spacing: 0) {
+                    HStack(alignment: .top) {
+                        VStack(alignment :.leading) {
+                        ZStack {
+                            HStack {
+                                Text("당신의")
+                                
+                                Spacer()
+                            }
+                            
+                            HStack {
+                                Text("Challenge")
+                                    .offset(y: size.height / 17.5)
+                                
+                                Spacer()
+                            }
+                            HStack {
+                                Text("Based")
+                                    .offset(y: size.height / 9)
+                                
+                                Spacer()
+                            }
+                            
+                            HStack {
+                                Text("Learning")
+                                    .offset(y: size.height / 6)
+                                
+                                Spacer()
+                            }
+                            
+                            
+                            HStack {
+                                Text("유형은?")
+                                    .offset(y: size.height / 4.45)
+                                
+                                Spacer()
+                            }
+                        }
+                        .font(.custom("AppleSDGothicNeo", size: 40))
+                        .foregroundColor(.offWhite)
+                        .offset(x: boolean.firstClicked ? -size.width : 0)
+                        .opacity(boolean.firstClicked ? 0 : 1)
+                            
+                            Spacer()
+                    }
+
                         Spacer()
                     }
-                    .frame(width: size.width / 1.2)
-                }
-                .frame(height: 250)
-                .padding(.vertical, 20)
-                
-                VStack(spacing: -30) {
-                    ForEach(types.indices, id: \.self) { index in
-                        GeometryReader {
-                            let size = $0.size
-                            VStack {
-                                HStack(spacing: 0) {
+                    .frame(height: size.height / 3.7)
+                    .padding(.top, size.height / 13.6)
+                    .padding(.bottom, size.height / 10)
+                    
+                    HStack {
+                        VStack(alignment: .leading, spacing: -5) {
+                            ForEach(types.indices, id: \.self) { index in
+                                HStack(alignment: .center, spacing: -20) {
                                     Image(types[index].memoji)
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
-                                        .frame(width: size.height / 1.5)
-                                        .padding(.leading)
+                                        .zIndex(1)
+                                        .frame(width: 60)
                                     
                                     Text(types[index].title)
-                                        .font(.system(size: 20, weight: .black))
-                                        .padding(.horizontal, 20)
-                                        .padding(.vertical, 8)
-                                        .frame(height: 40)
+                                        .font(.system(size: 24, weight: .bold))
+                                        .padding(.vertical, size.height / 120)
+                                        .padding(.horizontal, size.width / 23)
                                         .background {
                                             Capsule()
                                                 .fill(types[index].pointColor)
                                         }
-                                    
-                                    Spacer()
                                 }
+                                .padding(.leading, -15)
+                                .offset(x: boolean.firstClicked ? -size.width : 0)
+                                .opacity(boolean.firstClicked ? 0 : 1)
                             }
-                            .offset(x: boolean.firstClicked ? -size.width : 0)
-                            .opacity(boolean.firstClicked ? 0 : 1)
                         }
+                        
+                        Spacer()
                     }
+                    
                 }
-                .frame(height: 350)
-                .padding(.bottom)
+                .padding(.bottom, size.height / 6)
+                .padding(.leading, size.width / 10.5)
             }
+            
         }
     }
 }

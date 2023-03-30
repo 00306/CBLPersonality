@@ -13,17 +13,22 @@ struct ProgressBarView: View {
     
     var body: some View {
             GeometryReader { proxy in
-                ZStack(alignment: .leading) {
-                    Capsule()
-                        .fill(.gray.opacity(0.2))
-                        .frame(width: proxy.size.width / 1.4, height: 6)
+                HStack {
+                    Spacer()
                     
-                    Capsule()
-                        .fill(.white)
-                        .frame(width: (proxy.size.width / (1.4 * CGFloat(resultViewModel.questions.count)))*CGFloat(boolean.currentIndex), height: 6)
+                    ZStack(alignment: .leading) {
+                        Capsule()
+                            .fill(.gray.opacity(0.2))
+                            .frame(width: proxy.size.width / 1.2)
                         
+                        Capsule()
+                            .foregroundColor(.offWhite)
+                            .frame(width: (proxy.size.width / (1.2 * CGFloat(resultViewModel.questions.count)))*CGFloat(boolean.currentIndex))
+                    }
+                    
+                    Spacer()
                 }
-                
+                .opacity(boolean.firstClicked ? 1 : 0)
             }
     }
 }
