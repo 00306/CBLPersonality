@@ -25,25 +25,25 @@ struct MainView: View {
         ZStack {
             // Type 예시
             TypeExampleView()
-            
+
             // 테스트 시작
             QuestionView()
             
-            ButtonView()
-            
-            // 테스트 종료
-            TestFinishView()
-            
-            // 결과
-            ResultView()
-            
             VStack {
                 Spacer()
-                
+
                 ButtonView()
             }
             
+            QuestionmarkView()
+
+            
+            // 테스트 종료
+            TestFinishView()
+
+            // 결과
             ResultView()
+            
         }
     }
 }

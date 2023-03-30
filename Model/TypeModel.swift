@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TypeModel {
+struct TypeModel: Identifiable {
     let title: String
     let name: String
     let adaptability: Int
@@ -17,13 +17,16 @@ struct TypeModel {
     let wantToLearn: [String]
     let strength: [String]
     let pointColor: Color
+    var id: String {
+        title
+    }
 }
 
 let types: [TypeModel] = [.init(title: "분위기 메이커 ",
                                 name: "에릭",
                                 adaptability: 4,
-                                hashtags: ["#이타적 탐구가", "건강한 욕심",
-                                           "CBL 어렵지만 인정", "몰입의 힘"],
+                                hashtags: ["#이타적 탐구가", "#건강한 욕심",
+                                           "#CBL 어렵지만 인정", "#몰입의 힘"],
                                 memoji: "Memoji_Eric",
                                 description: "쏘니아에 당첨되신 걸 축하드립니다!\n 쏘니아는 처음엔 조용한 것 같지만, 과정에 적응하고 팀원들과 친해져 갈수록 점차 말이 많아지는 타입입니다.\n\n하지만 체력이 매우 안 좋아 회의 2시간이 지나는 시점부터 말수가 줄어드는 현상을 보이기도 합니다.\n\n최대한 창의적인 아이디어를 내고 싶어 해 고민을 많이 하는 편이며, 다른 팀원의 아이디어에 감탄하고 부러워합니다.\n\n날카로운 피드백엔 상처받는 스타일이기 때문에 칭찬과 함께 해주어야 합니다.",
                                 wantToLearn: ["쏘니아의 의견 정리 능력", "가디의 스몰토크", "제이의 발표능력"],
@@ -48,13 +51,13 @@ let types: [TypeModel] = [.init(title: "분위기 메이커 ",
                                             "#비공식 발표담당", "#목표에 대한 열정"],
                                 memoji: "Memoji_Jay",
                                 description: "축하합니다! 당신은 Jay타입입니다.\n\nJay는 팀원들과 의견을 주고 받는 것을 즐기며 그 과정 속에서 에너지를 얻습니다. 어떤 의견이든 주장과 근거의 관계가 합리적이라고 생각하면 수용하고 반영하는 편입니다.\n\n여러 분야에서 다양한 경험을 쌓는 것을 매우 가치있게 여겨서 아카데미 기간동안 다양한 분야의 경험을 쌓으려는 계획을 가지고 있어요.\n\n비효율적이라고 생각이 들면 이를 효율적으로 고치고 싶어해요.",
-                                wantToLearn: [],
+                                wantToLearn: ["가디의 의견 종합 및 분석 능력", "에릭의 지치지 않는 열정", "쏘니아와 로렌조 경청 능력"],
                                 strength: ["발표하는 것을 두려워 하지 않아요", "탁월한 커뮤니케이션 능력을 갖고 있어요", "다양한 아이디어를 생각하고 제시할 수 있어요"],
                               pointColor: Color.jayYellow),
                           
                           .init(title: "주도적 행동가 ",
                                 name: "로렌조",
-                                adaptability: 2,
+                                adaptability: 3,
                                 hashtags: ["#조용히 몰두", "#예리한 조력자",
                                            "#핵심을 간파하는 직관", "#CBL 적응중"],
                                 memoji: "Memoji_Lorenzo",

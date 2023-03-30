@@ -11,12 +11,12 @@ class ResultViewModel: ObservableObject {
     @Published var memberName: String = ""
     @Published var selectedValue: TypeValue = TypeValue(soniaType: 0.0, jayType: 0.0, lorenzoType: 0.0, guardyType: 0.0, ericType: 0.0)
     @Published var value: TypeValue = TypeValue(soniaType: 0.0, jayType: 0.0, lorenzoType: 0.0, guardyType: 0.0, ericType: 0.0)
-    @Published var memberType: TypeModel = TypeModel(title: "", name: "", adaptability: 0, hashtags: [], memoji: "", description: "", wantToLearn: [], strength: [], pointColor: Color.clear)
+    @Published var memberType: TypeModel = TypeModel(title: "", name: "", adaptability: 0, hashtags: ["", "", "", ""], memoji: "", description: "", wantToLearn: ["", "", ""], strength: ["", "", ""], pointColor: Color.clear)
     @Published var questions: [QuestionModel] = [
         .init(questionNumber: 1,
               question: "Our Big Idea를\n제시받았을 때...",
-              answers: [Answer(answerNumber: 1, answerTitle: "막힌다", answer: "너무 모호하다... 조금 더 구체적인 설명을 해주었으면 좋겠어"),
-                        Answer(answerNumber: 2, answerTitle: "기대돼", answer: "자유롭게 주제를 정할 수 있어서 오히려 좋아!")],
+              answers: [Answer(answerNumber: 1, answerTitle: "기대돼", answer: "자유롭게 주제를 정할 수 있어서 오히려 좋아!"),
+                        Answer(answerNumber: 2, answerTitle: "막힌다", answer: "너무 모호하다... 조금 더 구체적인 설명을 해주었으면 좋겠어")],
               values: [TypeValue(soniaType: 1, jayType: 1, lorenzoType: 1, guardyType: 0, ericType: 0),
                        TypeValue(soniaType: 0, jayType: 0, lorenzoType: 0, guardyType: 1, ericType: 1),
                       ]),
