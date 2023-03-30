@@ -134,7 +134,7 @@ struct QuestionView: View {
                             .padding(.bottom, size.height / 6)
                     }
                 }
-                .animation(.interactiveSpring(response: 0.5, dampingFraction: 0.8, blendDuration: 0.2), value: boolean.testStart)
+                .animation(.interactiveSpring(response: 0.6, dampingFraction: 0.8, blendDuration: 0.2), value: boolean.testStart)
         }
     }
 }
