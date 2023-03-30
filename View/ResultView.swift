@@ -11,7 +11,6 @@ struct ResultView: View {
     @EnvironmentObject var boolean: Boolean
     @EnvironmentObject var resultViewModel: ResultViewModel
     let typeDescription = types
-    let resultMember = ResultViewModel().memberType
     let whitecolor = Color.offWhite
     
     
@@ -220,7 +219,7 @@ struct ResultView: View {
                             
                             Text("다른 유형 보기")
                                 .font(.system(size: 18))
-                                .padding(.horizontal, 20)
+                                .padding(.horizontal, 23)
                                 .padding(.vertical, 15)
                                 .foregroundColor(.backgroundBlack)
                                 .background {
@@ -232,7 +231,7 @@ struct ResultView: View {
                                     }
                                 }
                         }
-                        .padding(.trailing, size.width / 16).padding(.leading, size.width / 75)
+                        .padding(.trailing, size.width / 16).padding(.leading, size.width / 30)
                         
                     }
                     .opacity(boolean.resultPage ? 1 : 0)
@@ -246,5 +245,5 @@ struct ResultView: View {
         }
         
     }
-}
+
 

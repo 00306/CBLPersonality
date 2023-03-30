@@ -11,7 +11,7 @@ class ResultViewModel: ObservableObject {
     @Published var memberName: String = ""
     @Published var selectedValue: TypeValue = TypeValue(soniaType: 0.0, jayType: 0.0, lorenzoType: 0.0, guardyType: 0.0, ericType: 0.0)
     @Published var value: TypeValue = TypeValue(soniaType: 0.0, jayType: 0.0, lorenzoType: 0.0, guardyType: 0.0, ericType: 0.0)
-    @Published var memberType: TypeModel = TypeModel(title: "", name: "", adaptability: 0, hashtags: [], memoji: "", description: "", wantToLearn: [], strength: [], pointColor: Color.clear, summary: "", bio: "", previewMemoji: "")
+    @Published var memberType: TypeModel = TypeModel(title: "", name: "", adaptability: 0, hashtags: ["","","",""], memoji: "", description: "", wantToLearn: ["","",""], strength: ["","",""], pointColor: Color.clear, summary: "", bio: "", previewMemoji: "")
     @Published var questions: [QuestionModel] = [
         .init(questionNumber: 1,
               question: "Our Big Idea를\n제시받았을 때...",

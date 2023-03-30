@@ -20,6 +20,9 @@ struct TypeModel: Identifiable {
     let summary: String
     let bio : String
     let previewMemoji: String
+    var id: String {
+        title
+    }
     
 }
 
@@ -75,7 +78,7 @@ let types: [TypeModel] = [
                                 hashtags: ["#조용히 몰두", "#예리한 조력자",
                                            "#핵심을 간파하는 직관", "#CBL 적응중"],
                                 memoji: "Memoji_Lorenzo",
-                                description: "와우, 당신은 로렌조 타입입니다!\n\n로렌조는 남모르게 CBL 과정들을 상세하게 기록해\n두어 팀원들이 놓친 부분을 알아챌 수 있도록 돕는\n역할을 합니다.아카데미에서 여러 분야의 사람들을 만나길 희망하\n며, 9개월 뒤의 자신이 어떤 모습으로 성장해 있을\n지 궁금해하고 있어요.개발 분야에서의 성장을 위해 누구보다 열심히, 차\n근차근 능력을 키워나가고 있답니다.",
+                                description: "와우, 당신은 로렌조 타입입니다!\n\n로렌조는 남모르게 CBL 과정들을 상세하게 기록해\n두어 팀원들이 놓친 부분을 알아챌 수 있도록 돕는\n역할을 합니다.\n\n아카데미에서 여러 분야의 사람들을 만나길 희망하\n며, 9개월 뒤의 자신이 어떤 모습으로 성장해 있을\n지 궁금해하고 있어요.\n\n개발 분야에서의 성장을 위해 누구보다 열심히, 차\n근차근 능력을 키워나가고 있답니다.",
                                 wantToLearn: ["쏘니아의 탁월한 디자인 능력", "에릭의 집중력과 테크 실력", "가디와 제이의 통찰력과 커뮤니케이션 능력"],
                                 strength: ["팀원이 놓친 부분을 캐치할 수 있는 능력", "맡은 일을 묵묵히 진행할 수 있는 끈기", "주도적으로 일을 찾아 해결하는 추진력"],
                                 pointColor: Color.lorenzoPink,
