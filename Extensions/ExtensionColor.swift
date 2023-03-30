@@ -16,4 +16,6 @@ extension Color {
     static var backgroundBlack = Color("backgroundBlack")
     static var questionGray = Color("questionGray")
     static var offWhite = Color("offWhite")
+    static var fourSix = Color("464646")
+    static var eeeeee = Color("2e2e2e")
 }

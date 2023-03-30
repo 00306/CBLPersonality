@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TypeModel {
+struct TypeModel: Identifiable {
     let title: String
     let name: String
     let adaptability: Int
@@ -41,8 +41,8 @@ let types: [TypeModel] = [
                                 .init(title: "분위기 메이커 ",
                                 name: "에릭",
                                 adaptability: 4,
-                                hashtags: ["#이타적 탐구가", "건강한 욕심",
-                                           "CBL 어렵지만 인정", "몰입의 힘"],
+                                hashtags: ["#이타적 탐구가", "#건강한 욕심",
+                                           "#CBL 어렵지만 인정", "#몰입의 힘"],
                                 memoji: "Memoji_Eric",
                                 description: "와 부럽다, 에릭 타입이라니.\n\n에릭은 ‘일은 대체할 수 있어도, 사람은 대체할 수\n없다.’는 생각을 가지고, 항상 좋은 팀원이 되고자\n해요. 그러다 보니 팀원들에게 폐를 끼치지 않으려고, 여러 방면에서 부단히 노력합니다.\n\n규칙에 얽매이지 않고 자유롭게 일하는걸 선호하지\n만, CBL을 경험한 후, 좋은 프레임워크 속에서 일하\n는 것도 좋아하게 됐어요.\n\n하지만 체력이 바닥나게 되면, 모든 생각과 행동을\n멈추기 때문에 빨리 집으로 보내줘야 해요.",
                                 wantToLearn: ["쏘니아의 의견 정리 능력", "가디의 스몰토크", "제이의 발표능력"],

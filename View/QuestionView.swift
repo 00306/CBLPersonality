@@ -1,10 +1,3 @@
-//
-//  SwiftUIView.swift
-//  
-//
-//  Created by Song Jihyuk on 2023/03/26.
-//
-
 import SwiftUI
 
 struct QuestionView: View {
@@ -25,7 +18,7 @@ struct QuestionView: View {
                         .padding(.top, size.height / 25.5)
 
                     VStack(alignment: .leading, spacing: 0) {
-                        HStack(alignment: .top) {
+                        HStack(alignment: .top, spacing: 0) {
                             ZStack(alignment: .top) {
                                 ForEach(resultViewModel.questions.indices, id: \.self) { index in
                                     HStack {
@@ -36,9 +29,11 @@ struct QuestionView: View {
                                             .opacity((boolean.testStart && boolean.firstClicked) ? 1 : 0)
                                             .opacity(boolean.currentIndex == resultViewModel.questions[index].questionNumber ? 1 : 0)
                                             .offset(y: boolean.currentIndex == resultViewModel.questions[index].questionNumber ? 0 : 100)
-                                        
+                                            
+                                            
                                         Spacer()
                                     }
+//                                    .frame(width: size.width / 1.3)
                                 }
                                 
                             }
@@ -46,19 +41,19 @@ struct QuestionView: View {
                             
                             
                             VStack(alignment: .trailing) {
-                                HStack {
+                                ZStack {
                                     Image(systemName: "questionmark.circle.fill")
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
-                                        .foregroundColor(.gray)
+                                        .foregroundColor(.fourSix)
                                         .frame(width: size.width / 20)
                                         .background {
                                             Circle()
                                                 .fill(.white)
                                             
                                         }
-                                        .padding(.top, 10)
-                                        .padding(.leading, size.width / 8.3)
+                                        .padding(.top, 13)
+                                        .padding(.leading, size.width / 97)
                                         .padding(.trailing, size.width / 9.3)
                                         .opacity(boolean.testStart ? 1 : 0)
                                         .onTapGesture {
@@ -66,6 +61,8 @@ struct QuestionView: View {
                                                 boolean.clickedQuestionmark.toggle()
                                             }
                                         }
+                                    
+                                    
                                 }
                             }
                         }
@@ -81,7 +78,7 @@ struct QuestionView: View {
                     
                 
                         // 답
-                        ZStack {
+                    ZStack(alignment: .bottom) {
                             ForEach($resultViewModel.questions[boolean.currentIndex-1].answers, id: \.self) { $answer in
                                 VStack(alignment: .leading) {
                                     HStack(alignment: .bottom) {
@@ -93,11 +90,11 @@ struct QuestionView: View {
                                             
                                             Text(answer.answer)
                                                 .font(.system(size: 14, weight: .regular))
-                                            
+                                                .padding(.bottom, 18)
                                             
                                         }
                                         .padding(.leading, 26)
-                                        .padding(.trailing, 31).padding(.bottom, size.width / 50)
+                                        .padding(.trailing, 31)
                                         
                                         Spacer()
                                     }

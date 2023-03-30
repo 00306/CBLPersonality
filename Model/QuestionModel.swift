@@ -17,6 +17,7 @@ struct Answer: Hashable {
 struct QuestionModel: Hashable {
     let questionNumber: Int
     let question: String
+    let toolTip: String
     var answers: [Answer]
     let values: [TypeValue]
 }

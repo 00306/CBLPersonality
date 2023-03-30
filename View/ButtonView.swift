@@ -90,6 +90,7 @@ struct ButtonView: View {
                                 
                             }
                         }
+                        .opacity(boolean.testFinish ? 0 : 1)
                         .disabled(!boolean.answerClicked)
                         
                         HStack {
