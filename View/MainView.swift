@@ -37,6 +37,8 @@ struct MainView: View {
                 
                 ButtonView()
             }
+            
+            ResultView()
         }
     }
 }

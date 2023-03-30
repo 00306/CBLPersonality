@@ -10,7 +10,7 @@ import SwiftUI
 class ResultViewModel: ObservableObject {
     @Published var memberName: String = ""
     @Published var value: TypeValue = TypeValue(soniaType: 0.0, jayType: 0.0, lorenzoType: 0.0, guardyType: 0.0, ericType: 0.0)
-    @Published var memberType: TypeModel = TypeModel(title: "", name: "", adaptability: 0, hashtags: [], memoji: "", description: "", pointColor: Color.clear)
+    @Published var memberType: TypeModel = TypeModel(title: "", name: "", adaptability: 0, hashtags: [], memoji: "", description: "", pointColor: Color.clear, want: "", strength: "")
     @Published var questions: [QuestionModel] = [
         .init(questionNumber: 1,
               question: "나는 팀플에서 주로...",
