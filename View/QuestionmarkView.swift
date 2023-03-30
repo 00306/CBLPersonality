@@ -24,29 +24,29 @@ struct QuestionmarkView: View {
                     }
                 }
                 
-            HStack {
-                Spacer()
-                
+            HStack(spacing: 0) {
                 Text(resultViewModel.questions[boolean.currentIndex-1].toolTip)
                     .font(.system(size: 16))
                     .foregroundColor(.white)
-                    .frame(width: size.width / 1.38)
-                    .padding(.vertical, size.height / 29.4)
-                    .padding(.horizontal, size.width / 13.9)
+                    .padding(.vertical, size.height / 24)
+                    .padding(.horizontal, size.width / 18)
+                    .padding(.top, 15)
                     
-                    .background {
-                        VStack(alignment: .trailing, spacing: -7) {
-                            Image("arrowUp")
-                                .padding(.trailing)
-                            
-                            BlurView(style: .systemUltraThinMaterialDark)
-                                .opacity(0.9)
-                                .cornerRadius(20)
-                        }
-                    }
             }
-            .padding(.horizontal, size.width / 14)
-            .padding(.top, size.height / 5.6)
+            .frame(width: size.width / 1.14)
+            .background {
+                VStack(alignment: .trailing, spacing: -1) {
+                    Image("arrowUp")
+                        .padding(.trailing, 20)
+                        
+                    
+                    BlurView(style: .systemUltraThinMaterialDark)
+                        .cornerRadius(20)
+                }
+                
+            }
+            .padding(.horizontal, size.width / 15.6)
+            .padding(.top, size.height / 5.2)
         }
         .opacity(boolean.clickedQuestionmark ? 1 : 0)
     }

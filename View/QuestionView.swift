@@ -33,7 +33,6 @@ struct QuestionView: View {
                                             
                                         Spacer()
                                     }
-//                                    .frame(width: size.width / 1.3)
                                 }
                                 
                             }
