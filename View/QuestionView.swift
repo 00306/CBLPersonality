@@ -45,7 +45,7 @@ struct QuestionView: View {
                                     Image(systemName: "questionmark.circle.fill")
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
-                                        .foregroundColor(.gray)
+                                        .foregroundColor(.fourSix)
                                         .frame(width: size.width / 20)
                                         .background {
                                             Circle()
