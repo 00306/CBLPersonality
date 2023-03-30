@@ -119,11 +119,21 @@ struct ResultView: View {
                                     }
                             }
                             
-                            Text("테스트 공유하기").font(.system(size: 18)).padding(.horizontal, 20).padding(.vertical, 15).foregroundColor(.backgroundBlack).background {
-                                RoundedRectangle(cornerRadius: 16)
+                            Text("다른 유형 보기")
+                                .font(.system(size: 18))
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 15)
+                                .foregroundColor(.backgroundBlack)
+                                .background {
+                                    RoundedRectangle(cornerRadius: 16)
                                 .foregroundColor(whitecolor)                        }
-                            
-                        }.padding(.trailing, size.width / 16).padding(.leading, size.width / 75)
+                                .onTapGesture {
+                                    withAnimation(.interactiveSpring(response: 1.1, dampingFraction: 0.8, blendDuration: 0.2)) {
+                                        boolean.otherTypes.toggle()
+                                    }
+                                }
+                        }
+                        .padding(.trailing, size.width / 16).padding(.leading, size.width / 75)
                         
                     }
                 }
@@ -131,68 +141,6 @@ struct ResultView: View {
             }
         }
         .opacity(boolean.resultPage ? 1 : 0)
-            
-            
-            
-            
-            
-            //            ZStack {
-            //                HStack {
-            //                    Spacer()
-            //
-            //                    VStack {
-            //                        Text("당신의 CBL 유형은?")
-            //                            .font(.system(size: 20, weight: .bold, design: .rounded))
-            //                            .foregroundColor(.black)
-            //                            .padding(.top, 60)
-            //                            .opacity(boolean.resultPage ? 1 : 0)
-            //                            .animation(.interactiveSpring(response: 1.1, dampingFraction: 0.8, blendDuration: 0.2).delay(1), value: boolean.resultPage)
-            //
-            //
-            //                        Text(resultViewModel.memberType.name)
-            //                            .font(.system(size: 40, weight: .bold, design: .rounded))
-            //                            .foregroundColor(.black)
-            //                            .padding()
-            //                            .opacity(boolean.resultPage ? 1 : 0)
-            //                            .animation(.interactiveSpring(response: 1.1, dampingFraction: 0.8, blendDuration: 0.2).delay(2), value: boolean.resultPage)
-            //
-            //                        Image(resultViewModel.memberType.memoji)
-            //                            .resizable()
-            //                            .aspectRatio(contentMode: .fit)
-            //                            .opacity(boolean.resultPage ? 1 : 0)
-            //                            .animation(.interactiveSpring(response: 1.1, dampingFraction: 0.8, blendDuration: 0.2).delay(2), value: boolean.resultPage)
-            //                            .frame(width: size.width / 2)
-            //
-            //                        ZStack{
-            //                                       HStack{
-            //                                           ForEach(0..<5){ num in
-            //                                               Image(systemName: "star")
-            //                                           }
-            //                                       }.frame(width: 100, height: 100, alignment:.leading)
-            //                                       HStack{
-            //                                           ForEach(0..<4){ num in
-            //                                                   Image(systemName: "star.fill")
-            //                                               }
-            //                                       }.frame(width: 100, height: 100, alignment: .leading)
-            //
-            //                                       }
-            //                            .opacity(boolean.resultPage ? 1 : 0)
-            //                            .animation(.interactiveSpring(response: 1.1, dampingFraction: 0.8, blendDuration: 0.2).delay(2.3), value: boolean.resultPage)
-            //
-            //                        Text(resultViewModel.memberType.hashtags.description)
-            //                            .font(.system(size: 14, weight: .bold, design: .rounded))
-            //                            .opacity(boolean.resultPage ? 1 : 0)
-            //                            .animation(.interactiveSpring(response: 1.1, dampingFraction: 0.8, blendDuration: 0.2).delay(2.3), value: boolean.resultPage)
-            //
-            //                        RoundedRectangle(cornerRadius: 24)
-            //                            .foregroundColor(.gray.opacity(0.2))
-            //                            .opacity(boolean.resultPage ? 1 : 0)
-            //                            .animation(.interactiveSpring(response: 1.1, dampingFraction: 0.8, blendDuration: 0.2).delay(2.3), value: boolean.resultPage)
-            //                    }
-            //
-            //                    Spacer()
-            //                }
-            //            }
             
         }
         
