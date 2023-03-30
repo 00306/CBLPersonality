@@ -17,6 +17,8 @@ struct TypeModel {
     let wantToLearn: [String]
     let strength: [String]
     let pointColor: Color
+    let want: String
+    let strength: String
 }
 
 let types: [TypeModel] = [.init(title: "분위기 메이커 에릭",

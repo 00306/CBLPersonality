@@ -25,6 +25,14 @@ struct MainView: View {
             
             // 결과
             ResultView()
+            
+            VStack {
+                Spacer()
+                
+                ButtonView()
+            }
+            
+            ResultView()
         }
     }
 }
