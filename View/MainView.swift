@@ -15,6 +15,7 @@ class Boolean: ObservableObject {
     @Published var resultPage = false
     @Published var clickedQuestionmark = false
     @Published var answerClicked = false
+    @Published var otherTypes = false
     @Published var currentIndex = 1
 }
 
@@ -43,6 +44,10 @@ struct MainView: View {
 
             // 결과
             ResultView()
+            
+            
+            
+            Preview()
             
         }
     }
