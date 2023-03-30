@@ -10,6 +10,8 @@ import SwiftUI
 struct ResultView: View {
     @EnvironmentObject var boolean: Boolean
     @EnvironmentObject var resultViewModel: ResultViewModel
+    @State private var isClicked = false
+    
     let typeDescription = types
     let whitecolor = Color.offWhite
     
@@ -96,6 +98,7 @@ struct ResultView: View {
                                         .fill(member.pointColor)
                                     
                                 }
+                            
                             Text(member.hashtags[3])
                                 .font(.system(size: 18))
                                 .padding(.horizontal, 10)
@@ -105,34 +108,40 @@ struct ResultView: View {
                                         .fill(member.pointColor)
                                     
                                 }
-                        }.padding(.leading, size.width / 32.5)
-                        HStack{  // 적응력
+                        }
+                        .padding(.leading, size.width / 32.5)
+                        
+                        HStack {  // 적응력
                             Text("CBL 적응력")
                                 .foregroundColor(whitecolor)
                                 .font(.system(size: 16, weight: .bold))
                                 .frame(alignment: .leading)
                                 .padding(.leading, size.width / 26)
+                                .onTapGesture {
+                                    print(member.adaptability)
+                                }
                             
-                            ZStack{
-                                HStack{
-                                    ForEach(0..<member.adaptability) { num in
+                            ZStack(alignment: .leading) {
+                                HStack {
+                                    ForEach(0..<5) { num in
                                         Image("STAR")
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: size.width / 24)
                                     }
                                 }
-                                .frame(width: 100, height: 100, alignment:.leading)
+                                .frame(width: 100, height: 100, alignment: .leading)
                                 
                                 HStack {
-                                    ForEach(0..<member.adaptability) { num in
+                                    ForEach(0..<resultViewModel.memberType.adaptability, id: \.self) { num in
                                         Image("STAR.fill")
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                             .frame(width: size.width / 24)
                                     }
                                 }
-                                .frame(width: 100, height: 100, alignment: .leading).padding(.bottom, 2)
+                                .frame(width: 100, height: 100, alignment: .leading)
+                                .padding(.bottom, 2)
                                 
                             }
                             .padding(.leading, size.width / 35.4)
@@ -202,37 +211,38 @@ struct ResultView: View {
                         .padding(.trailing, size.width / 16)
                         
                         HStack(spacing: size.width / 24) {  // 다시하기 공유하기
-                            
-                            Text("테스트 다시하기")
-                                .font(.system(size: 18))
-                                .foregroundColor(whitecolor)
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 15)
-                                .background {
-                                    RoundedRectangle(cornerRadius: 16)
-                                    .foregroundColor(.backgroundBlack)
-                                    .background {
-                                        RoundedRectangle(cornerRadius: 16)
-                                            .stroke(.white, lineWidth: 1.5)
-                                    }
+                            ZStack {
+                                Image("arrow.black")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: size.width / 15)
+                                
+                                Image("arrow")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: size.width / 15)
                             }
                             
-                            Text("다른 유형 보기")
-                                .font(.system(size: 18))
-                                .padding(.horizontal, 23)
-                                .padding(.vertical, 15)
-                                .foregroundColor(.backgroundBlack)
+                        Text("다른 유형 보기")
+                            .font(.system(size: 18, weight: .bold, design: .rounded))
+                            .foregroundColor(isClicked ? .black : .white)
+                    }
+                        .frame(width: size.width / 1.14, height: size.height / 12.5)
+                        .background {
+                            Capsule()
+                                .foregroundColor(isClicked ? .white : .backgroundBlack)
                                 .background {
-                                    RoundedRectangle(cornerRadius: 16)
-                                .foregroundColor(whitecolor)                        }
-                                .onTapGesture {
-                                    withAnimation(.interactiveSpring(response: 1.1, dampingFraction: 0.8, blendDuration: 0.2)) {
-                                        boolean.otherTypes.toggle()
-                                    }
+                                    Capsule()
+                                        .stroke(.white, lineWidth: 3)
                                 }
                         }
-                        .padding(.trailing, size.width / 16).padding(.leading, size.width / 30)
-                        
+                        .onTapGesture {
+                            withAnimation(.interactiveSpring(response: 1.1, dampingFraction: 0.8, blendDuration: 0.2)) {
+                                boolean.otherTypes.toggle()
+                            }
+
+                        }
+                        .padding(.trailing, size.width / 16)
                     }
                     .opacity(boolean.resultPage ? 1 : 0)
                     .animation(.interactiveSpring(response: 1.1, dampingFraction: 0.8, blendDuration: 0.2).delay(2.5), value: boolean.resultPage)
@@ -241,7 +251,6 @@ struct ResultView: View {
             }
         }
         .opacity(boolean.resultPage ? 1 : 0)
-            
         }
         
     }

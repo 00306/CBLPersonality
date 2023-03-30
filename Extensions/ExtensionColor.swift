@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension Color {
-    static var jayYellow = Color("JayYellow")
+    static var jayYellow = Color("jayYellow")
     static var soniaGreen = Color("soniaGreen")
     static var lorenzoPink = Color("lorenzoPink")
     static var guardyBlue = Color("guardyBlue")

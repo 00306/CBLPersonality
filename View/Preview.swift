@@ -11,8 +11,7 @@ struct Preview: View {
     
     @EnvironmentObject var boolean: Boolean
     @EnvironmentObject var resultViewModel: ResultViewModel
-    // let typeDescription = types
-    // let resultMember = ResultViewModel().memberType
+    @State private var isClicked = false
     
     let previewMember = types
     let whiteColor = Color.offWhite
@@ -125,11 +124,12 @@ struct Preview: View {
                                 }
                             }
                         }
+                    .padding(.horizontal)
                     .padding(.bottom, 30)
                     }
                 }
             }
-.opacity(boolean.otherTypes ? 1 : 0)
+        .opacity(boolean.otherTypes ? 1 : 0)
         }
     }
 

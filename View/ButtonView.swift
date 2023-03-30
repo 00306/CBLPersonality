@@ -53,16 +53,17 @@ struct ButtonView: View {
                         }
                         .onTapGesture {
                             resultViewModel.caculateValue(selectedAnswer: resultViewModel.selectedValue)
-                            
+
                             withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.9)) {
                                 boolean.testStart.toggle()
                                 boolean.answerClicked.toggle()
                                 
                                 withAnimation(.interactiveSpring(response: 0.3, dampingFraction: 0.7, blendDuration: 0.2)) {
                                     clickReact.toggle()
+                                    
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                                         withAnimation(.interactiveSpring(response: 0.3, dampingFraction: 1, blendDuration: 0.2)) {
-                                            resultViewModel.deriveResult()
+                                            
                                             clickReact.toggle()
                                         }
                                     }
@@ -85,6 +86,7 @@ struct ButtonView: View {
                                 
                             } else {
                                 withAnimation(.interactiveSpring(response: 0.7, dampingFraction: 0.7, blendDuration: 0.9)) {
+                                    resultViewModel.deriveResult()
                                     boolean.testFinish.toggle()
                                 }
                                 
