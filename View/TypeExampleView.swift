@@ -81,14 +81,20 @@ struct TypeExampleView: View {
                                         .zIndex(1)
                                         .frame(width: 60)
                                     
+                                    HStack(spacing: 0) {
                                     Text(types[index].title)
                                         .font(.system(size: 24, weight: .bold))
-                                        .padding(.vertical, size.height / 120)
-                                        .padding(.horizontal, size.width / 23)
-                                        .background {
-                                            Capsule()
-                                                .fill(types[index].pointColor)
-                                        }
+                                        Text(types[index].name)
+                                            .font(.system(size: 24, weight: .bold))
+                                        
+                                        
+                                }
+                                    .padding(.vertical, size.height / 120)
+                                    .padding(.horizontal, size.width / 23)
+                                    .background {
+                                        Capsule()
+                                            .fill(types[index].pointColor)
+                                    }
                                 }
                                 .padding(.leading, -15)
                                 .offset(x: boolean.firstClicked ? -size.width : 0)

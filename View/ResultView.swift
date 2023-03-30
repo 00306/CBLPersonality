@@ -12,6 +12,8 @@ struct ResultView: View {
     @EnvironmentObject var resultViewModel: ResultViewModel
     let typeDescription = types
     let resultMember = ResultViewModel().memberType
+    let whitecolor = Color.offWhite
+    
     
     var body: some View {
         GeometryReader {
@@ -20,13 +22,12 @@ struct ResultView: View {
                 .ignoresSafeArea()
                 .offset(y: 0)
             
-            let whitecolor = Color("AppWhite")
             let membercolor = typeDescription[1].pointColor
 
             ScrollView{
                 VStack {
                     ZStack{  // 유형 + 미모지
-                        Text(typeDescription[1].title).font(.system(size: 40)).foregroundColor(whitecolor).multilineTextAlignment(.leading).offset(x: -(size.width / 3.5) , y: -(size.height / 80))
+                        Text("\(typeDescription[1].title)\n\(typeDescription[1].name)").font(.system(size: 40)).foregroundColor(whitecolor).multilineTextAlignment(.leading).offset(x: -(size.width / 3.5) , y: -(size.height / 80))
 
                         Image(typeDescription[1].memoji).resizable().aspectRatio(contentMode:.fit).frame(width: 180).offset(x: size.width / 8, y: 100)
                         
@@ -93,7 +94,7 @@ struct ResultView: View {
                                                                                                                                         32.5)
                             ZStack{
                                 RoundedRectangle(cornerRadius: 22).foregroundColor(Color("Grayyyy"))
-                                Text(typeDescription[1].want).lineSpacing(1.8).font(.system(size: 16)).frame(width: 300, alignment: .leading).padding(.vertical,20).foregroundColor(whitecolor).padding(.leading, 4)
+                                Text(typeDescription[1].wantToLearn[1]).lineSpacing(1.8).font(.system(size: 16)).frame(width: 300, alignment: .leading).padding(.vertical,20).foregroundColor(whitecolor).padding(.leading, 4)
                             }
                         }.padding(.bottom, size.height / 25).padding(.trailing, size.width / 16)
                         
@@ -102,7 +103,7 @@ struct ResultView: View {
                             ZStack{
                                 RoundedRectangle(cornerRadius: 22)
                                 .foregroundColor(Color("Grayyyy"))
-                                Text(typeDescription[1].strength).lineSpacing(1.8).font(.system(size: 16)).frame(width: 300, alignment: .leading).padding(.vertical, 20).foregroundColor(whitecolor).padding(.leading, 4)
+                                Text(typeDescription[1].strength[1]).lineSpacing(1.8).font(.system(size: 16)).frame(width: 300, alignment: .leading).padding(.vertical, 20).foregroundColor(whitecolor).padding(.leading, 4)
                                 
                             }
                         }.padding(.bottom, size.height / 19).padding(.trailing, size.width / 16)
@@ -129,6 +130,7 @@ struct ResultView: View {
                 .padding(.leading, size.width / 16) //.padding(.trailing, size.width / 11)
             }
         }
+        .opacity(boolean.resultPage ? 1 : 0)
             
             
             

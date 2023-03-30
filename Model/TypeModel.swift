@@ -17,11 +17,9 @@ struct TypeModel {
     let wantToLearn: [String]
     let strength: [String]
     let pointColor: Color
-    let want: String
-    let strength: String
 }
 
-let types: [TypeModel] = [.init(title: "분위기 메이커 에릭",
+let types: [TypeModel] = [.init(title: "분위기 메이커 ",
                                 name: "에릭",
                                 adaptability: 4,
                                 hashtags: ["#이타적 탐구가", "건강한 욕심",
@@ -32,7 +30,7 @@ let types: [TypeModel] = [.init(title: "분위기 메이커 에릭",
                                 strength: ["자기주도적 성장을 하고 있어요", "아이디어를 구현하기 위해 항상 노력해요", "팀원을 생각하는 이타적인 모습이 돋보여요"],
                                 pointColor: Color.ericOrange),
                           
-                          .init(title: "그저 '빛' 쏘니아",
+                          .init(title: "그저 '빛' ",
                                 name: "쏘니아",
                                 adaptability: 4,
                                 hashtags: ["#청중을 사로잡는 디자인", "#경청 능력",
@@ -43,7 +41,7 @@ let types: [TypeModel] = [.init(title: "분위기 메이커 에릭",
                                 strength: ["영리한 방법으로 정보를 시각화할 수 있어요", "팀원들의 아이디어를 하나로 정리해요", "편안한 분위기를 만들어내는 재능이 있어요"],
                                 pointColor: Color.soniaGreen),
                           
-                          .init(title: "발표의 신 제이",
+                          .init(title: "발표의 신 ",
                                 name: "제이",
                                 adaptability: 5,
                                 hashtags: ["#탁월한 커뮤니케이터", "#CBL 최고야!",
@@ -54,7 +52,7 @@ let types: [TypeModel] = [.init(title: "분위기 메이커 에릭",
                                 strength: ["발표하는 것을 두려워 하지 않아요", "탁월한 커뮤니케이션 능력을 갖고 있어요", "다양한 아이디어를 생각하고 제시할 수 있어요"],
                               pointColor: Color.jayYellow),
                           
-                          .init(title: "주도적 행동가 로렌조",
+                          .init(title: "주도적 행동가 ",
                                 name: "로렌조",
                                 adaptability: 2,
                                 hashtags: ["#조용히 몰두", "#예리한 조력자",
@@ -65,7 +63,7 @@ let types: [TypeModel] = [.init(title: "분위기 메이커 에릭",
                                 strength: ["팀원이 놓친 부분을 캐치할 수 있는 능력", "맡은 일을 묵묵히 진행할 수 있는 끈기", "주도적으로 일을 찾아 해결하는 추진력"],
                                 pointColor: Color.lorenzoPink),
                           
-                          .init(title: "경험치 만랩 가디",
+                          .init(title: "경험치 만랩 ",
                                 name: "가디",
                                 adaptability: 3,
                                 hashtags: ["#CBL 어려워요", "#자존감 지킴이",
