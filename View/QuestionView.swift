@@ -93,11 +93,11 @@ struct QuestionView: View {
                                             
                                             Text(answer.answer)
                                                 .font(.system(size: 14, weight: .regular))
-                                                .padding(.bottom, 18)
+                                            
                                             
                                         }
                                         .padding(.leading, 26)
-                                        .padding(.trailing, 31)
+                                        .padding(.trailing, 31).padding(.bottom, size.width / 50)
                                         
                                         Spacer()
                                     }
