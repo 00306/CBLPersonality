@@ -225,12 +225,12 @@ struct ResultView: View {
                             
                         Text("다른 유형 보기")
                             .font(.system(size: 18, weight: .bold, design: .rounded))
-                            .foregroundColor(isClicked ? .black : .white)
+                            .foregroundColor(boolean.otherTypes ? .black : .white)
                     }
                         .frame(width: size.width / 1.14, height: size.height / 12.5)
                         .background {
                             Capsule()
-                                .foregroundColor(isClicked ? .white : .backgroundBlack)
+                                .foregroundColor(boolean.otherTypes ? .white : .backgroundBlack)
                                 .background {
                                     Capsule()
                                         .stroke(.white, lineWidth: 3)

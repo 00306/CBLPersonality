@@ -122,9 +122,10 @@ class ResultViewModel: ObservableObject {
     }
     
     func deriveResult() {
-        let array: [String:Double] = ["에릭" : value.ericType, "소니아" : value.soniaType, "제이" : value.jayType, "로렌조" : value.lorenzoType, "가디" : value.guardyType]
-        if let maxKey = array.max(by: { $0.value < $1.value })?.key {
+        let array: [String:Double] = ["에릭" : value.ericType, "쏘니아" : value.soniaType, "제이" : value.jayType, "로렌조" : value.lorenzoType, "가디" : value.guardyType]
+        if let maxKey = array.max(by: { a, b in a.value <= b.value })?.key {
             self.memberName = maxKey
+            print(memberName)
             }
         
         for index in 0..<memberTypes.count {
